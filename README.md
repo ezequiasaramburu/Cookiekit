@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CookieKit 🍪
+
+CookieKit is a developer-friendly tool that helps you easily implement GDPR-compliant cookie consent badges and generate privacy policies and terms of service for your web applications.
+
+## Features
+
+- **Cookie Consent Badge**: Customizable, GDPR-compliant cookie consent badge
+
+  - Light/Dark theme support
+  - Configurable position (bottom-left or bottom-right)
+  - Easy to embed with a single script tag
+
+- **Privacy Policy Generator**: Create a comprehensive privacy policy
+
+  - Customizable company information
+  - Data collection types (email, payment, analytics)
+  - GDPR-compliant template
+
+- **Terms of Service Generator**: Generate terms of service
+  - Multiple payment model support (free, subscription, one-time)
+  - Jurisdiction selection (US, EU, Other)
+  - Professional legal template
 
 ## Getting Started
 
-First, run the development server:
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/cookiekit.git
+
+# Navigate to the project directory
+cd cookiekit
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Using the Cookie Badge
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Visit the Cookie Badge page
+2. Customize your badge settings:
+   - Enter your site name
+   - Add your privacy policy link
+   - Choose theme (light/dark)
+   - Select position
+3. Copy the generated script tag
+4. Paste it into your website's HTML
 
-## Learn More
+### Generating Documents
 
-To learn more about Next.js, take a look at the following resources:
+#### Privacy Policy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Navigate to the Privacy Policy page
+2. Fill in your company details
+3. Select the types of data you collect
+4. Generate and copy your policy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Terms of Service
 
-## Deploy on Vercel
+1. Go to the Terms of Service page
+2. Enter your product information
+3. Choose your payment model
+4. Select your jurisdiction
+5. Generate and copy your terms
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technology Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js 14](https://nextjs.org/) - React Framework
+- [TypeScript](https://www.typescriptlang.org/) - Type Safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) - Font
+
+## Development
+
+```bash
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support & Community
+
+### Issues & Bug Reports
+
+- Search our [issue tracker](https://github.com/ezequiasaramburu/cookiekit/issues) to see if your issue has already been reported
+- If not, create a new issue with:
+  - A clear, descriptive title
+  - Detailed steps to reproduce the problem
+  - Information about your environment (browser, OS, etc.)
+  - Any relevant error messages or screenshots
+
+### Feature Requests
+
+Have an idea to improve CookieKit? We'd love to hear it!
+
+- Check our [discussions](https://github.com/ezequiasaramburu/cookiekit/discussions) to see if it's already been suggested
+- Create a new discussion with:
+  - Use case and benefits
+  - Potential implementation details (optional)
+  - Any relevant examples or mockups
+
+### Community
+
+- Star ⭐ the repository to show your support
