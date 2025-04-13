@@ -5,6 +5,7 @@ import { replacePlaceholders } from "@/utils/templateUtils";
 import { privacyPolicyTemplate } from "@/templates/privacyPolicy";
 import { PageLayout } from "@/components/PageLayout";
 import { Checkbox } from "@/components/Checkbox";
+import { Button } from "@/components/Button";
 
 type DataType =
   | "email"
@@ -251,8 +252,10 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
-                Data Collected
+              <label className="block text-sm font-medium mb-4">
+                <span className="inline-block border-b border-gray-300 pb-1">
+                  Data Collected
+                </span>
               </label>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -340,24 +343,16 @@ export default function PrivacyPage() {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700"
-            >
-              Generate Privacy Policy
-            </button>
+            <Button type="submit">Generate Privacy Policy</Button>
           </form>
         </div>
       ) : (
         <div className="space-y-6">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold">Your Privacy Policy</h2>
-            <button
-              onClick={() => setShowPolicy(false)}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300"
-            >
+            <Button variant="secondary" onClick={() => setShowPolicy(false)}>
               Edit
-            </button>
+            </Button>
           </div>
 
           <div
@@ -367,12 +362,7 @@ export default function PrivacyPage() {
 
           <div className="flex justify-end space-x-4">
             <div className="relative">
-              <button
-                onClick={handleCopyToClipboard}
-                className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700"
-              >
-                Copy to Clipboard
-              </button>
+              <Button onClick={handleCopyToClipboard}>Copy to Clipboard</Button>
               {showTooltip && (
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-md whitespace-nowrap">
                   Copied!
@@ -380,7 +370,7 @@ export default function PrivacyPage() {
                 </div>
               )}
             </div>
-            <button
+            <Button
               onClick={() => {
                 const policy = generatePolicy();
                 const blob = new Blob([policy], { type: "text/html" });
@@ -393,10 +383,9 @@ export default function PrivacyPage() {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
               }}
-              className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600"
             >
               Download HTML
-            </button>
+            </Button>
           </div>
         </div>
       )}

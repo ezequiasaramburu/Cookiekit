@@ -5,6 +5,7 @@ import { BadgePreview } from "@/components/BadgePreview";
 import { generateScriptTag } from "@/utils/generateScriptTag";
 import { PageLayout } from "@/components/PageLayout";
 import { Select } from "@/components/Select";
+import { Button } from "@/components/Button";
 
 export default function Home() {
   const [siteName, setSiteName] = useState("");
@@ -122,12 +123,9 @@ export default function Home() {
             </div>
             <div className="flex justify-end mt-2">
               <div className="relative">
-                <button
-                  onClick={handleCopy}
-                  className="px-3 py-1 bg-amber-600 text-white rounded hover:bg-amber-700"
-                >
+                <Button size="sm" onClick={handleCopy}>
                   Copy
-                </button>
+                </Button>
                 {copied && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-md whitespace-nowrap">
                     Copied!
