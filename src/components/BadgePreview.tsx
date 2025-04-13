@@ -24,7 +24,7 @@ export const BadgePreview: React.FC<BadgePreviewProps> = ({
     <div
       className={`absolute ${
         positionClasses[position]
-      } p-4 rounded-lg shadow-lg max-w-[325px] ${
+      } p-4 rounded-lg shadow-xl max-w-[325px] ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-gray-800"
       }`}
     >
