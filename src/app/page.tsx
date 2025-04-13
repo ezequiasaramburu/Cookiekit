@@ -11,6 +11,7 @@ export default function Home() {
   const [position, setPosition] = useState<"bottom-left" | "bottom-right">(
     "bottom-right"
   );
+  const [copied, setCopied] = useState(false);
 
   const scriptTag = generateScriptTag({
     siteName,
@@ -18,6 +19,12 @@ export default function Home() {
     theme,
     position,
   });
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(scriptTag);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <main className="min-h-screen p-8">
@@ -113,14 +120,24 @@ export default function Home() {
               <h2 className="text-lg font-semibold mb-4">Embed Code</h2>
               <div className="relative">
                 <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto">
-                  <code>{scriptTag}</code>
+                  <code className="text-gray-800">{scriptTag}</code>
                 </pre>
-                <button
-                  onClick={() => navigator.clipboard.writeText(scriptTag)}
-                  className="absolute top-2 right-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                >
-                  Copy
-                </button>
+              </div>
+              <div className="flex justify-end mt-2">
+                <div className="relative">
+                  <button
+                    onClick={handleCopy}
+                    className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                  >
+                    Copy
+                  </button>
+                  {copied && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-md whitespace-nowrap">
+                      Copied!
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
