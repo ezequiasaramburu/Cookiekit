@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { replacePlaceholders } from "@/utils/templateUtils";
 
 type DataType = "email" | "payment" | "analytics";
 
@@ -9,6 +10,7 @@ export default function PrivacyPage() {
   const [email, setEmail] = useState("");
   const [dataTypes, setDataTypes] = useState<DataType[]>([]);
   const [showPolicy, setShowPolicy] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleCheckboxChange = (type: DataType) => {
     if (dataTypes.includes(type)) {
@@ -23,67 +25,43 @@ export default function PrivacyPage() {
     setShowPolicy(true);
   };
 
+  const handleCopyToClipboard = () => {
+    const policy = generatePolicy();
+    navigator.clipboard.writeText(policy);
+
+    // Show tooltip
+    setShowTooltip(true);
+
+    // Hide tooltip after 2 seconds
+    setTimeout(() => {
+      setShowTooltip(false);
+    }, 2000);
+  };
+
   const generatePolicy = () => {
-    return `
+    // Create a template with placeholders
+    const template = `
       <div class="privacy-policy" style="color: #333; font-family: system-ui, -apple-system, sans-serif; line-height: 1.6;">
-        <h1 style="color: #1a365d; font-size: 24px; margin-bottom: 16px;">Privacy Policy for ${companyName}</h1>
-        <p style="color: #4a5568; margin-bottom: 16px;">Last updated: ${new Date().toLocaleDateString()}</p>
+        <h1 style="color: #1a365d; font-size: 24px; margin-bottom: 16px;">Privacy Policy for {{companyName}}</h1>
+        <p style="color: #4a5568; margin-bottom: 16px;">Last updated: {{date}}</p>
         
         <h2 style="color: #2d3748; font-size: 20px; margin-top: 24px; margin-bottom: 12px;">1. Introduction</h2>
-        <p style="color: #4a5568; margin-bottom: 16px;">${companyName} ("we", "our", or "us") respects your privacy and is committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
+        <p style="color: #4a5568; margin-bottom: 16px;">{{companyName}} ("we", "our", or "us") respects your privacy and is committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
         
         <h2 style="color: #2d3748; font-size: 20px; margin-top: 24px; margin-bottom: 12px;">2. Contact Information</h2>
         <p style="color: #4a5568; margin-bottom: 16px;">If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
-        <p style="color: #4a5568; margin-bottom: 16px;">Email: ${email}</p>
+        <p style="color: #4a5568; margin-bottom: 16px;">Email: {{email}}</p>
         
         <h2 style="color: #2d3748; font-size: 20px; margin-top: 24px; margin-bottom: 12px;">3. Data We Collect</h2>
         <p style="color: #4a5568; margin-bottom: 16px;">We collect and process the following data about you:</p>
         <ul style="color: #4a5568; margin-bottom: 16px; padding-left: 24px;">
-          ${
-            dataTypes.includes("email")
-              ? "<li style='margin-bottom: 8px;'>Email addresses when you sign up for our services</li>"
-              : ""
-          }
-          ${
-            dataTypes.includes("payment")
-              ? "<li style='margin-bottom: 8px;'>Payment information when you make a purchase</li>"
-              : ""
-          }
-          ${
-            dataTypes.includes("analytics")
-              ? "<li style='margin-bottom: 8px;'>Analytics data to improve our services</li>"
-              : ""
-          }
-          ${
-            dataTypes.length === 0
-              ? "<li style='margin-bottom: 8px;'>We do not collect any personal data</li>"
-              : ""
-          }
+          {{dataCollected}}
         </ul>
         
         <h2 style="color: #2d3748; font-size: 20px; margin-top: 24px; margin-bottom: 12px;">4. How We Use Your Data</h2>
         <p style="color: #4a5568; margin-bottom: 16px;">We use your data for the following purposes:</p>
         <ul style="color: #4a5568; margin-bottom: 16px; padding-left: 24px;">
-          ${
-            dataTypes.includes("email")
-              ? "<li style='margin-bottom: 8px;'>To communicate with you about our services</li>"
-              : ""
-          }
-          ${
-            dataTypes.includes("payment")
-              ? "<li style='margin-bottom: 8px;'>To process your payments</li>"
-              : ""
-          }
-          ${
-            dataTypes.includes("analytics")
-              ? "<li style='margin-bottom: 8px;'>To analyze and improve our website performance</li>"
-              : ""
-          }
-          ${
-            dataTypes.length === 0
-              ? "<li style='margin-bottom: 8px;'>We do not use any personal data</li>"
-              : ""
-          }
+          {{dataUsage}}
         </ul>
         
         <h2 style="color: #2d3748; font-size: 20px; margin-top: 24px; margin-bottom: 12px;">5. Data Security</h2>
@@ -96,6 +74,64 @@ export default function PrivacyPage() {
         <p style="color: #4a5568; margin-bottom: 16px;">We may update our privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the "Last updated" date at the top of this privacy policy.</p>
       </div>
     `;
+
+    // Generate the data collected list items
+    const dataCollectedItems = [];
+    if (dataTypes.includes("email")) {
+      dataCollectedItems.push(
+        "<li style='margin-bottom: 8px;'>Email addresses when you sign up for our services</li>"
+      );
+    }
+    if (dataTypes.includes("payment")) {
+      dataCollectedItems.push(
+        "<li style='margin-bottom: 8px;'>Payment information when you make a purchase</li>"
+      );
+    }
+    if (dataTypes.includes("analytics")) {
+      dataCollectedItems.push(
+        "<li style='margin-bottom: 8px;'>Analytics data to improve our services</li>"
+      );
+    }
+    if (dataTypes.length === 0) {
+      dataCollectedItems.push(
+        "<li style='margin-bottom: 8px;'>We do not collect any personal data</li>"
+      );
+    }
+
+    // Generate the data usage list items
+    const dataUsageItems = [];
+    if (dataTypes.includes("email")) {
+      dataUsageItems.push(
+        "<li style='margin-bottom: 8px;'>To communicate with you about our services</li>"
+      );
+    }
+    if (dataTypes.includes("payment")) {
+      dataUsageItems.push(
+        "<li style='margin-bottom: 8px;'>To process your payments</li>"
+      );
+    }
+    if (dataTypes.includes("analytics")) {
+      dataUsageItems.push(
+        "<li style='margin-bottom: 8px;'>To analyze and improve our website performance</li>"
+      );
+    }
+    if (dataTypes.length === 0) {
+      dataUsageItems.push(
+        "<li style='margin-bottom: 8px;'>We do not use any personal data</li>"
+      );
+    }
+
+    // Create the data object for replacement
+    const data = {
+      companyName,
+      email,
+      date: new Date().toLocaleDateString(),
+      dataCollected: dataCollectedItems.join("\n"),
+      dataUsage: dataUsageItems.join("\n"),
+    };
+
+    // Replace placeholders in the template
+    return replacePlaceholders(template, data);
   };
 
   return (
@@ -197,7 +233,21 @@ export default function PrivacyPage() {
             dangerouslySetInnerHTML={{ __html: generatePolicy() }}
           />
 
-          <div className="flex justify-end">
+          <div className="flex justify-end space-x-4">
+            <div className="relative">
+              <button
+                onClick={handleCopyToClipboard}
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              >
+                Copy to Clipboard
+              </button>
+              {showTooltip && (
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-md whitespace-nowrap">
+                  Copied!
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                </div>
+              )}
+            </div>
             <button
               onClick={() => {
                 const policy = generatePolicy();
