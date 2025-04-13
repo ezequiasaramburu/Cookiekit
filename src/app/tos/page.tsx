@@ -4,6 +4,7 @@ import { useState } from "react";
 import { replacePlaceholders } from "@/utils/templateUtils";
 import { termsOfServiceTemplate } from "@/templates/termsOfService";
 import { PageLayout } from "@/components/PageLayout";
+import { Select } from "@/components/Select";
 
 type PaymentModel = "free" | "subscription" | "one-time";
 type Jurisdiction = "US" | "EU" | "Other";
@@ -144,18 +145,17 @@ export default function TermsOfServicePage() {
               >
                 Jurisdiction
               </label>
-              <select
+              <Select
                 id="jurisdiction"
                 value={jurisdiction}
                 onChange={(e) =>
                   setJurisdiction(e.target.value as Jurisdiction)
                 }
-                className="w-full px-3 py-2 border rounded-lg"
               >
                 <option value="US">US</option>
                 <option value="EU">EU</option>
                 <option value="Other">Other</option>
-              </select>
+              </Select>
             </div>
 
             <button

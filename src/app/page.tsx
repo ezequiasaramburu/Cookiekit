@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BadgePreview } from "@/components/BadgePreview";
 import { generateScriptTag } from "@/utils/generateScriptTag";
 import { PageLayout } from "@/components/PageLayout";
+import { Select } from "@/components/Select";
 
 export default function Home() {
   const [siteName, setSiteName] = useState("");
@@ -69,15 +70,14 @@ export default function Home() {
             <label htmlFor="theme" className="block text-sm font-medium mb-2">
               Theme
             </label>
-            <select
+            <Select
               id="theme"
               value={theme}
               onChange={(e) => setTheme(e.target.value as "light" | "dark")}
-              className="w-full px-3 py-2 border rounded-lg"
             >
               <option value="light">Light</option>
               <option value="dark">Dark</option>
-            </select>
+            </Select>
           </div>
 
           <div>
@@ -87,17 +87,16 @@ export default function Home() {
             >
               Position
             </label>
-            <select
+            <Select
               id="position"
               value={position}
               onChange={(e) =>
                 setPosition(e.target.value as "bottom-left" | "bottom-right")
               }
-              className="w-full px-3 py-2 border rounded-lg"
             >
               <option value="bottom-right">Bottom Right</option>
               <option value="bottom-left">Bottom Left</option>
-            </select>
+            </Select>
           </div>
         </div>
 
