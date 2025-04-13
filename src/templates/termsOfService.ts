@@ -9,7 +9,7 @@
  */
 
 export const termsOfServiceTemplate = `
-  <div class="terms-of-service" style="color: #333; font-family: system-ui, -apple-system, sans-serif; line-height: 1.6;">
+  <div class="terms-of-service" style="color: #333; font-family: 'JetBrains Mono', monospace; line-height: 1.6;">
     <h1 style="color: #1a365d; font-size: 24px; margin-bottom: 16px;">Terms of Service for {{productName}}</h1>
     <p style="color: #4a5568; margin-bottom: 16px;">Last updated: {{date}}</p>
     

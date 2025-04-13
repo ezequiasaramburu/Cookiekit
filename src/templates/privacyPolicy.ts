@@ -10,7 +10,7 @@
  */
 
 export const privacyPolicyTemplate = `
-  <div class="privacy-policy" style="color: #333; font-family: system-ui, -apple-system, sans-serif; line-height: 1.6;">
+  <div class="privacy-policy" style="color: #333; font-family: 'JetBrains Mono', monospace; line-height: 1.6;">
     <h1 style="color: #1a365d; font-size: 24px; margin-bottom: 16px;">Privacy Policy for {{companyName}}</h1>
     <p style="color: #4a5568; margin-bottom: 16px;">Last updated: {{date}}</p>
     

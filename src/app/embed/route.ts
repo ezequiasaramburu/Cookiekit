@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 9999;
     max-width: 400px;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     \${theme === 'dark' 
       ? 'background-color: #1f2937; color: white;' 
       : 'background-color: white; color: #1f2937;'}
