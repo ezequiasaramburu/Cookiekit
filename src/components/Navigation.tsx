@@ -8,7 +8,7 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-amber-50 shadow-sm">
       <div className="max-w-7xl mx-auto pl-1 pr-6">
         <div className="flex justify-between h-16">
           <div className="flex">
@@ -21,7 +21,7 @@ export function Navigation() {
                   height={52}
                   className="mr-1"
                 />
-                <span className="text-xl font-bold text-gray-800">
+                <span className="text-xl font-bold text-amber-800">
                   CookieKit
                 </span>
               </div>
@@ -56,10 +56,10 @@ function NavLink({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+      className={`inline-flex items-center px-3 py-2 rounded-md text-sm font-medium ${
         isActive
-          ? "border-blue-500 text-gray-900"
-          : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+          ? "bg-amber-200 text-amber-900 font-semibold"
+          : "text-amber-700 hover:bg-amber-100 hover:text-amber-900"
       }`}
     >
       {children}
