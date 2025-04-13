@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BadgePreview } from "@/components/BadgePreview";
+import { generateScriptTag } from "@/utils/generateScriptTag";
 
 export default function Home() {
   const [siteName, setSiteName] = useState("");
@@ -11,7 +12,12 @@ export default function Home() {
     "bottom-right"
   );
 
-  const scriptTag = `<script src="https://cookiekit.app/embed.js" data-site-name="${siteName}" data-privacy-policy="${privacyPolicyLink}" data-theme="${theme}" data-position="${position}"></script>`;
+  const scriptTag = generateScriptTag({
+    siteName,
+    privacyPolicyLink,
+    theme,
+    position,
+  });
 
   return (
     <main className="min-h-screen p-8">
