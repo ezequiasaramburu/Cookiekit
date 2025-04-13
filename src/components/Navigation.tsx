@@ -1,12 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 export function Navigation() {
-  const pathname = usePathname();
-
   return (
     <nav className="bg-amber-50 shadow-sm">
       <div className="max-w-7xl mx-auto pl-1 pr-6">
@@ -26,43 +22,9 @@ export function Navigation() {
                 </span>
               </div>
             </div>
-            <div className="hidden sm:ml-2 sm:flex sm:space-x-4 pl-8">
-              <NavLink href="/" isActive={pathname === "/"}>
-                Cookie Badge
-              </NavLink>
-              <NavLink href="/privacy" isActive={pathname === "/privacy"}>
-                Privacy Policy
-              </NavLink>
-              <NavLink href="/tos" isActive={pathname === "/tos"}>
-                Terms of Service
-              </NavLink>
-            </div>
           </div>
         </div>
       </div>
     </nav>
-  );
-}
-
-function NavLink({
-  href,
-  isActive,
-  children,
-}: {
-  href: string;
-  isActive: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`inline-flex items-center px-3 py-2 rounded-md text-sm font-medium ${
-        isActive
-          ? "bg-amber-200 text-amber-900 font-semibold"
-          : "text-amber-700 hover:bg-amber-100 hover:text-amber-900"
-      }`}
-    >
-      {children}
-    </Link>
   );
 }
