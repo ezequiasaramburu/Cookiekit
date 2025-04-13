@@ -4,6 +4,7 @@ import { useState } from "react";
 import { replacePlaceholders } from "@/utils/templateUtils";
 import { privacyPolicyTemplate } from "@/templates/privacyPolicy";
 import { PageLayout } from "@/components/PageLayout";
+import { Checkbox } from "@/components/Checkbox";
 
 type DataType = "email" | "payment" | "analytics";
 
@@ -141,36 +142,24 @@ export default function PrivacyPage() {
                 Data Collected
               </label>
               <div className="space-y-2">
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="email"
-                    checked={dataTypes.includes("email")}
-                    onChange={() => handleCheckboxChange("email")}
-                    className="mr-2"
-                  />
-                  <label htmlFor="email">Email</label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="payment"
-                    checked={dataTypes.includes("payment")}
-                    onChange={() => handleCheckboxChange("payment")}
-                    className="mr-2"
-                  />
-                  <label htmlFor="payment">Payment Info</label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="analytics"
-                    checked={dataTypes.includes("analytics")}
-                    onChange={() => handleCheckboxChange("analytics")}
-                    className="mr-2"
-                  />
-                  <label htmlFor="analytics">Analytics</label>
-                </div>
+                <Checkbox
+                  id="email"
+                  checked={dataTypes.includes("email")}
+                  onChange={() => handleCheckboxChange("email")}
+                  label="Email"
+                />
+                <Checkbox
+                  id="payment"
+                  checked={dataTypes.includes("payment")}
+                  onChange={() => handleCheckboxChange("payment")}
+                  label="Payment Info"
+                />
+                <Checkbox
+                  id="analytics"
+                  checked={dataTypes.includes("analytics")}
+                  onChange={() => handleCheckboxChange("analytics")}
+                  label="Analytics"
+                />
               </div>
             </div>
 

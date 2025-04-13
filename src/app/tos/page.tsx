@@ -5,6 +5,7 @@ import { replacePlaceholders } from "@/utils/templateUtils";
 import { termsOfServiceTemplate } from "@/templates/termsOfService";
 import { PageLayout } from "@/components/PageLayout";
 import { Select } from "@/components/Select";
+import { Checkbox } from "@/components/Checkbox";
 
 type PaymentModel = "free" | "subscription" | "one-time";
 type Jurisdiction = "US" | "EU" | "Other";
@@ -105,36 +106,24 @@ export default function TermsOfServicePage() {
                 Payment Model
               </label>
               <div className="space-y-2">
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="free"
-                    checked={paymentModels.includes("free")}
-                    onChange={() => handleCheckboxChange("free")}
-                    className="mr-2"
-                  />
-                  <label htmlFor="free">Free</label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="subscription"
-                    checked={paymentModels.includes("subscription")}
-                    onChange={() => handleCheckboxChange("subscription")}
-                    className="mr-2"
-                  />
-                  <label htmlFor="subscription">Subscriptions</label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="one-time"
-                    checked={paymentModels.includes("one-time")}
-                    onChange={() => handleCheckboxChange("one-time")}
-                    className="mr-2"
-                  />
-                  <label htmlFor="one-time">One-time purchases</label>
-                </div>
+                <Checkbox
+                  id="free"
+                  checked={paymentModels.includes("free")}
+                  onChange={() => handleCheckboxChange("free")}
+                  label="Free"
+                />
+                <Checkbox
+                  id="subscription"
+                  checked={paymentModels.includes("subscription")}
+                  onChange={() => handleCheckboxChange("subscription")}
+                  label="Subscriptions"
+                />
+                <Checkbox
+                  id="one-time"
+                  checked={paymentModels.includes("one-time")}
+                  onChange={() => handleCheckboxChange("one-time")}
+                  label="One-time purchases"
+                />
               </div>
             </div>
 
