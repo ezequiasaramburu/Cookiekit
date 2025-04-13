@@ -2,19 +2,31 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export function Navigation() {
   const pathname = usePathname();
 
   return (
     <nav className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto pl-1 pr-6">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold text-gray-800">CookieKit</span>
+              <div className="flex items-center">
+                <Image
+                  src="/assets/cookiekit-logo.png"
+                  alt="CookieKit Logo"
+                  width={52}
+                  height={52}
+                  className="mr-1"
+                />
+                <span className="text-xl font-bold text-gray-800">
+                  CookieKit
+                </span>
+              </div>
             </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <div className="hidden sm:ml-2 sm:flex sm:space-x-4 pl-8">
               <NavLink href="/" isActive={pathname === "/"}>
                 Cookie Badge
               </NavLink>
