@@ -176,7 +176,7 @@ export default function PrivacyPage() {
 
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700"
             >
               Generate Privacy Policy
             </button>
@@ -203,7 +203,7 @@ export default function PrivacyPage() {
             <div className="relative">
               <button
                 onClick={handleCopyToClipboard}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700"
               >
                 Copy to Clipboard
               </button>
@@ -227,7 +227,7 @@ export default function PrivacyPage() {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
               }}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600"
             >
               Download HTML
             </button>

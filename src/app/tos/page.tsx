@@ -160,7 +160,7 @@ export default function TermsOfServicePage() {
 
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700"
             >
               Generate Terms of Service
             </button>
@@ -187,7 +187,7 @@ export default function TermsOfServicePage() {
             <div className="relative">
               <button
                 onClick={handleCopyToClipboard}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700"
               >
                 Copy to Clipboard
               </button>
@@ -211,7 +211,7 @@ export default function TermsOfServicePage() {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
               }}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600"
             >
               Download HTML
             </button>

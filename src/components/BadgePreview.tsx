@@ -46,8 +46,8 @@ export const BadgePreview: React.FC<BadgePreviewProps> = ({
           <button
             className={`px-3 py-1 rounded text-sm ${
               theme === "dark"
-                ? "bg-blue-600 hover:bg-blue-700"
-                : "bg-blue-500 hover:bg-blue-600"
+                ? "bg-amber-600 hover:bg-amber-700"
+                : "bg-amber-500 hover:bg-amber-600"
             } text-white`}
           >
             Accept
