@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { replacePlaceholders } from "@/utils/templateUtils";
 import { termsOfServiceTemplate } from "@/templates/termsOfService";
+import { PageLayout } from "@/components/PageLayout";
 
 type PaymentModel = "free" | "subscription" | "one-time";
 type Jurisdiction = "US" | "EU" | "Other";
@@ -77,92 +78,94 @@ export default function TermsOfServicePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-8">Terms of Service Generator</h1>
-
+    <PageLayout title="Terms of Service Generator">
       {!showTerms ? (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label
-              htmlFor="productName"
-              className="block text-sm font-medium mb-2"
-            >
-              Product Name
-            </label>
-            <input
-              type="text"
-              id="productName"
-              value={productName}
-              onChange={(e) => setProductName(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg"
-              required
-            />
-          </div>
+        <div className="max-w-xl">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label
+                htmlFor="productName"
+                className="block text-sm font-medium mb-2"
+              >
+                Product Name
+              </label>
+              <input
+                type="text"
+                id="productName"
+                value={productName}
+                onChange={(e) => setProductName(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg"
+                required
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              Payment Model
-            </label>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="free"
-                  checked={paymentModels.includes("free")}
-                  onChange={() => handleCheckboxChange("free")}
-                  className="mr-2"
-                />
-                <label htmlFor="free">Free</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="subscription"
-                  checked={paymentModels.includes("subscription")}
-                  onChange={() => handleCheckboxChange("subscription")}
-                  className="mr-2"
-                />
-                <label htmlFor="subscription">Subscriptions</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="one-time"
-                  checked={paymentModels.includes("one-time")}
-                  onChange={() => handleCheckboxChange("one-time")}
-                  className="mr-2"
-                />
-                <label htmlFor="one-time">One-time purchases</label>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Payment Model
+              </label>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="free"
+                    checked={paymentModels.includes("free")}
+                    onChange={() => handleCheckboxChange("free")}
+                    className="mr-2"
+                  />
+                  <label htmlFor="free">Free</label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="subscription"
+                    checked={paymentModels.includes("subscription")}
+                    onChange={() => handleCheckboxChange("subscription")}
+                    className="mr-2"
+                  />
+                  <label htmlFor="subscription">Subscriptions</label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="one-time"
+                    checked={paymentModels.includes("one-time")}
+                    onChange={() => handleCheckboxChange("one-time")}
+                    className="mr-2"
+                  />
+                  <label htmlFor="one-time">One-time purchases</label>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <label
-              htmlFor="jurisdiction"
-              className="block text-sm font-medium mb-2"
-            >
-              Jurisdiction
-            </label>
-            <select
-              id="jurisdiction"
-              value={jurisdiction}
-              onChange={(e) => setJurisdiction(e.target.value as Jurisdiction)}
-              className="w-full px-3 py-2 border rounded-lg"
-            >
-              <option value="US">US</option>
-              <option value="EU">EU</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+            <div>
+              <label
+                htmlFor="jurisdiction"
+                className="block text-sm font-medium mb-2"
+              >
+                Jurisdiction
+              </label>
+              <select
+                id="jurisdiction"
+                value={jurisdiction}
+                onChange={(e) =>
+                  setJurisdiction(e.target.value as Jurisdiction)
+                }
+                className="w-full px-3 py-2 border rounded-lg"
+              >
+                <option value="US">US</option>
+                <option value="EU">EU</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-          <button
-            type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-          >
-            Generate Terms of Service
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            >
+              Generate Terms of Service
+            </button>
+          </form>
+        </div>
       ) : (
         <div className="space-y-6">
           <div className="flex justify-between items-center">
@@ -215,6 +218,6 @@ export default function TermsOfServicePage() {
           </div>
         </div>
       )}
-    </div>
+    </PageLayout>
   );
 }

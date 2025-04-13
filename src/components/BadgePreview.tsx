@@ -14,9 +14,17 @@ export const BadgePreview: React.FC<BadgePreviewProps> = ({
   theme,
   position,
 }) => {
+  // Map position to Tailwind classes
+  const positionClasses = {
+    "bottom-left": "bottom-4 left-4",
+    "bottom-right": "bottom-4 right-4",
+  };
+
   return (
     <div
-      className={`absolute ${position} p-4 rounded-lg shadow-lg max-w-[90%] ${
+      className={`absolute ${
+        positionClasses[position]
+      } p-4 rounded-lg shadow-lg max-w-[90%] ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-gray-800"
       }`}
     >

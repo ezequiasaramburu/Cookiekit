@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { replacePlaceholders } from "@/utils/templateUtils";
 import { privacyPolicyTemplate } from "@/templates/privacyPolicy";
+import { PageLayout } from "@/components/PageLayout";
 
 type DataType = "email" | "payment" | "analytics";
 
@@ -100,87 +101,87 @@ export default function PrivacyPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-8">Privacy Policy Generator</h1>
-
+    <PageLayout title="Privacy Policy Generator">
       {!showPolicy ? (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label
-              htmlFor="companyName"
-              className="block text-sm font-medium mb-2"
-            >
-              Company Name
-            </label>
-            <input
-              type="text"
-              id="companyName"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg"
-              required
-            />
-          </div>
+        <div className="max-w-xl">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label
+                htmlFor="companyName"
+                className="block text-sm font-medium mb-2"
+              >
+                Company Name
+              </label>
+              <input
+                type="text"
+                id="companyName"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg"
+                required
+              />
+            </div>
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg"
-              required
-            />
-          </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg"
+                required
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              Data Collected
-            </label>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="email"
-                  checked={dataTypes.includes("email")}
-                  onChange={() => handleCheckboxChange("email")}
-                  className="mr-2"
-                />
-                <label htmlFor="email">Email</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="payment"
-                  checked={dataTypes.includes("payment")}
-                  onChange={() => handleCheckboxChange("payment")}
-                  className="mr-2"
-                />
-                <label htmlFor="payment">Payment Info</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="analytics"
-                  checked={dataTypes.includes("analytics")}
-                  onChange={() => handleCheckboxChange("analytics")}
-                  className="mr-2"
-                />
-                <label htmlFor="analytics">Analytics</label>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Data Collected
+              </label>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="email"
+                    checked={dataTypes.includes("email")}
+                    onChange={() => handleCheckboxChange("email")}
+                    className="mr-2"
+                  />
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="payment"
+                    checked={dataTypes.includes("payment")}
+                    onChange={() => handleCheckboxChange("payment")}
+                    className="mr-2"
+                  />
+                  <label htmlFor="payment">Payment Info</label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="analytics"
+                    checked={dataTypes.includes("analytics")}
+                    onChange={() => handleCheckboxChange("analytics")}
+                    className="mr-2"
+                  />
+                  <label htmlFor="analytics">Analytics</label>
+                </div>
               </div>
             </div>
-          </div>
 
-          <button
-            type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-          >
-            Generate Privacy Policy
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            >
+              Generate Privacy Policy
+            </button>
+          </form>
+        </div>
       ) : (
         <div className="space-y-6">
           <div className="flex justify-between items-center">
@@ -233,6 +234,6 @@ export default function PrivacyPage() {
           </div>
         </div>
       )}
-    </div>
+    </PageLayout>
   );
 }
